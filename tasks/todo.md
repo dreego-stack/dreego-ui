@@ -1,22 +1,22 @@
 # Dreego UI v0.1 Tasks
 
-- [ ] Create the repository scaffold and development commands.
+- [x] Create the repository scaffold and development commands.
   - Acceptance: module metadata, license, README, Makefile, and `smd.toml` exist.
   - Verify: `smd make check` runs from the repository root.
   - Files: root configuration and documentation.
 
-- [ ] Implement theme types and built-in themes using TDD.
+- [x] Implement theme types and built-in themes using TDD.
   - Acceptance: fresh valid `WhiteTheme` and `BlackTheme` values are returned.
   - Verify: focused Go unit tests pass.
   - Files: `theme.go`, `theme_test.go`, internal token files.
 
-- [ ] Implement theme validation using TDD.
+- [x] Implement theme validation using TDD.
   - Acceptance: malformed IDs, colors, lengths, and unsafe CSS values fail with
     actionable errors.
   - Verify: validation unit and fuzz tests pass.
   - Files: internal validation package and tests.
 
-- [ ] Implement the immutable registry and CSS generator using TDD.
+- [x] Implement the immutable registry and CSS generator using TDD.
   - Acceptance: arbitrary themes register in stable order; duplicates fail;
     generated CSS is deterministic.
   - Verify: registry tests and stylesheet golden tests pass.
@@ -51,4 +51,3 @@
     file-size rules have no known release blocker.
   - Verify: full `smd make check` and browser checklist pass.
   - Files: tests, docs, and release metadata only.
-
