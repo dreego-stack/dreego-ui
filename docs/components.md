@@ -58,6 +58,22 @@ import Toggle "components/dreegoui/Toggle.dreego"
 Toggle uses a native checkbox associated with a visible label and exposes
 switch semantics to assistive technology.
 
+## Icon
+
+```dreego
+import Icon "components/dreegoui/Icon.dreego"
+
+<body>
+    <@Icon name="shield" label="Protected"/>
+    <@Icon name="arrow-right"/>
+</body>
+```
+
+The essential set contains `check`, `close`, `menu`, `arrow-right`, `shield`,
+and `code`. An empty label marks the icon as decorative. A non-empty label
+exposes it as an image with an accessible name. Sizes are `small`, `medium`,
+and `large`.
+
 ## Card
 
 ```dreego

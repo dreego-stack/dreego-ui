@@ -26,6 +26,7 @@ require github.com/dreego-stack/dreego v0.6.4
 	writeFixtureFile(t, directory, "www/routes/+page.dreego", `import Button "components/dreegoui/Button.dreego"
 import Card "components/dreegoui/Card.dreego"
 import CodeBox "components/dreegoui/CodeBox.dreego"
+import Icon "components/dreegoui/Icon.dreego"
 import ThemePicker "components/dreegoui/ThemePicker.dreego"
 import Toggle "components/dreegoui/Toggle.dreego"
 
@@ -48,6 +49,7 @@ import Toggle "components/dreegoui/Toggle.dreego"
         {#slot footer}<a href="/settings">Settings</a>{/slot}
     </@Card>
     <@CodeBox code="go test ./..." language="shell"/>
+    <@Icon name="shield" label="Protected"/>
     <@ThemePicker id="theme-choice" themes={themes} csrfToken="token" selected="white" returnTo="/settings"/>
 </body>`)
 	writeFixtureFile(t, directory, "www/routes/render_test.go", `package routes
@@ -68,7 +70,7 @@ func TestComponentPageMarkup(t *testing.T) {
         t.Fatal(err)
     }
     for _, want := range []string{
-        "<button", "role=\"switch\"", "<article", "<figure", "<form",
+        "<button", "role=\"switch\"", "<article", "<figure", "<form", "<svg",
         "name=\"csrf_token\"", "value=\"black\"", "go test ./...",
     } {
         if !strings.Contains(html, want) {
@@ -111,7 +113,7 @@ func TestComponentPageMarkup(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, function := range []string{"Button", "Toggle", "Card", "CodeBox", "ThemePicker"} {
+	for _, function := range []string{"Button", "Toggle", "Card", "CodeBox", "Icon", "ThemePicker"} {
 		if !strings.Contains(string(generated), "func "+function+"(") {
 			t.Errorf("generated components do not contain %s", function)
 		}

@@ -1,0 +1,51 @@
+Component Icon (name string, label string = "", size string = "medium")
+
+<server>
+    className := "dreego-icon dreego-icon--medium"
+    if size == "small" {
+        className = "dreego-icon dreego-icon--small"
+    } else if size == "large" {
+        className = "dreego-icon dreego-icon--large"
+    }
+</server>
+
+<body data-dreego-ui="icon-0">
+    {#if label == ""}
+        <svg class="{{ className }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            {#if name == "check"}<path d="m5 12 4 4L19 6"/>{/if}
+            {#if name == "close"}<path d="M6 6l12 12M18 6 6 18"/>{/if}
+            {#if name == "menu"}<path d="M4 7h16M4 12h16M4 17h16"/>{/if}
+            {#if name == "arrow-right"}<path d="M5 12h14M13 6l6 6-6 6"/>{/if}
+            {#if name == "shield"}<path d="M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/>{/if}
+            {#if name == "code"}<path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14"/>{/if}
+        </svg>
+    {#else}
+        <svg class="{{ className }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="{{ label }}" focusable="false">
+            <title>{{ label }}</title>
+            {#if name == "check"}<path d="m5 12 4 4L19 6"/>{/if}
+            {#if name == "close"}<path d="M6 6l12 12M18 6 6 18"/>{/if}
+            {#if name == "menu"}<path d="M4 7h16M4 12h16M4 17h16"/>{/if}
+            {#if name == "arrow-right"}<path d="M5 12h14M13 6l6 6-6 6"/>{/if}
+            {#if name == "shield"}<path d="M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/>{/if}
+            {#if name == "code"}<path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14"/>{/if}
+        </svg>
+    {/if}
+</body>
+
+<style>
+.dreego-icon {
+    display: inline-block;
+    flex: 0 0 auto;
+    height: 1.25rem;
+    vertical-align: middle;
+    width: 1.25rem;
+}
+.dreego-icon--small {
+    height: 1rem;
+    width: 1rem;
+}
+.dreego-icon--large {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+</style>

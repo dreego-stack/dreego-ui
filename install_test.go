@@ -21,6 +21,7 @@ func TestInstallComponentsWritesCompleteStableSet(t *testing.T) {
 		"Button.dreego",
 		"Card.dreego",
 		"CodeBox.dreego",
+		"Icon.dreego",
 		"ThemePicker.dreego",
 		"Toggle.dreego",
 		"theme_option.go",
