@@ -22,7 +22,7 @@
   - Verify: registry tests and stylesheet golden tests pass.
   - Files: `registry.go`, registry tests, internal CSS package and tests.
 
-- [ ] Implement App registration and theme resolution using TDD.
+- [x] Implement App registration and theme resolution using TDD.
   - Acceptance: assets register before build; late or conflicting registration
     returns wrapped Dreego errors; invalid selections fall back safely.
   - Verify: unit and Dreego integration tests pass.

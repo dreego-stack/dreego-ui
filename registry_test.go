@@ -154,3 +154,20 @@ func TestStylesheetGolden(t *testing.T) {
 		t.Fatalf("stylesheet hash = %s, want %s", got, want)
 	}
 }
+
+func TestStylesheetForUsesResolvedThemeAsRoot(t *testing.T) {
+	registry, err := ui.NewRegistry(ui.Options{})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	stylesheet := registry.StylesheetFor("black")
+	if !strings.HasPrefix(stylesheet, `:root{--dreego-color-canvas:#000000;`) {
+		t.Fatalf("stylesheet root does not use BlackTheme: %s", stylesheet[:80])
+	}
+
+	fallback := registry.StylesheetFor("missing")
+	if !strings.HasPrefix(fallback, `:root{--dreego-color-canvas:#ffffff;`) {
+		t.Fatalf("stylesheet root does not use default fallback: %s", fallback[:80])
+	}
+}

@@ -12,6 +12,9 @@ type Options struct {
 	DefaultTheme         string
 	Themes               []Theme
 	DisableBuiltInThemes bool
+	StylesheetPath       string
+	SelectionPath        string
+	Preference           PreferenceStore
 }
 
 type Registry struct {

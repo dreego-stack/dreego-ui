@@ -7,11 +7,15 @@ import (
 )
 
 func (r *Registry) Stylesheet() string {
+	return r.StylesheetFor("")
+}
+
+func (r *Registry) StylesheetFor(id string) string {
 	if r == nil {
 		return ""
 	}
 	var css strings.Builder
-	writeThemeRule(&css, ":root", r.Default())
+	writeThemeRule(&css, ":root", r.Resolve(id))
 	for _, id := range r.order {
 		writeThemeRule(&css, `[data-dreego-theme="`+id+`"]`, r.themes[id])
 	}
