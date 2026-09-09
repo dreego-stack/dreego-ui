@@ -16,14 +16,14 @@ func TestInstalledComponentsGenerateAndCompileWithDreego(t *testing.T) {
 
 go 1.22
 
-require github.com/dreego-stack/dreego v0.4.0
+require github.com/dreego-stack/dreego v0.6.4
 `)
 	writeFixtureFile(t, directory, "www/dreego.config.json", `{
     "logging": {"enabled": false},
     "redirects": [],
     "rewrites": []
 }`)
-	writeFixtureFile(t, directory, "www/routes/page.dreego", `import Button "components/dreegoui/Button.dreego"
+	writeFixtureFile(t, directory, "www/routes/+page.dreego", `import Button "components/dreegoui/Button.dreego"
 import Card "components/dreegoui/Card.dreego"
 import CodeBox "components/dreegoui/CodeBox.dreego"
 import ThemePicker "components/dreegoui/ThemePicker.dreego"
@@ -85,17 +85,17 @@ func TestComponentPageMarkup(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	download := exec.Command("go", "mod", "download", "github.com/dreego-stack/dreego")
-	download.Dir = directory
-	if output, err := download.CombinedOutput(); err != nil {
-		t.Fatalf("download Dreego module: %v\n%s", err, output)
+	tidy := exec.Command("go", "mod", "tidy")
+	tidy.Dir = directory
+	if output, err := tidy.CombinedOutput(); err != nil {
+		t.Fatalf("resolve fixture module: %v\n%s", err, output)
 	}
-	generate := exec.Command("go", "run", "github.com/dreego-stack/dreego/cli/dreego", "generate", "--force")
+	generate := exec.Command("go", "run", "-mod=mod", "github.com/dreego-stack/dreego/cli/dreego", "generate", "--force")
 	generate.Dir = directory
 	if output, err := generate.CombinedOutput(); err != nil {
 		t.Fatalf("dreego generate: %v\n%s", err, output)
 	}
-	check := exec.Command("go", "run", "github.com/dreego-stack/dreego/cli/dreego", "generate", "--check")
+	check := exec.Command("go", "run", "-mod=mod", "github.com/dreego-stack/dreego/cli/dreego", "generate", "--check")
 	check.Dir = directory
 	if output, err := check.CombinedOutput(); err != nil {
 		t.Fatalf("dreego generate check: %v\n%s", err, output)
