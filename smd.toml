@@ -14,11 +14,11 @@
 [port]
 
 [session]
-  ports = []
+  ports = ["8091:8091"]
 
 [live]
   mount_pwd = true
-  ports = ["8080:8080"]
+  ports = ["8091:8091"]
 
 [temp]
   allow_env = []

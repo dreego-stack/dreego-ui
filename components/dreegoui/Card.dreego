@@ -1,0 +1,35 @@
+Component Card
+
+<body data-dreego-ui="card-3">
+    <article class="dreego-card">
+        <header class="dreego-card__header">{#slot header}{/slot}</header>
+        <div class="dreego-card__body">{#slot}</div>
+        <footer class="dreego-card__footer">{#slot footer}{/slot}</footer>
+    </article>
+</body>
+
+<style>
+.dreego-card {
+    background: var(--dreego-color-surface-raised);
+    border: 1px solid var(--dreego-color-border);
+    border-radius: var(--dreego-shape-radius-large);
+    box-shadow: var(--dreego-elevation-small);
+    color: var(--dreego-color-text);
+    overflow: hidden;
+}
+.dreego-card__header,
+.dreego-card__body,
+.dreego-card__footer {
+    padding: 1.25rem;
+}
+.dreego-card__header:empty,
+.dreego-card__footer:empty {
+    display: none;
+}
+.dreego-card__header {
+    border-bottom: 1px solid var(--dreego-color-border);
+}
+.dreego-card__footer {
+    border-top: 1px solid var(--dreego-color-border);
+}
+</style>

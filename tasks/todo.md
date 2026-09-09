@@ -28,7 +28,7 @@
   - Verify: unit and Dreego integration tests pass.
   - Files: `plugin.go`, selection files, tests, one integration fixture.
 
-- [ ] Validate and implement component distribution.
+- [x] Validate and implement component distribution.
   - Acceptance: application imports are explicit and installation never
     overwrites user files silently.
   - Verify: a clean fixture generates and builds twice reproducibly.

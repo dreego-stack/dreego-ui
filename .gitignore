@@ -2,4 +2,5 @@
 /tmp/
 /vendor/
 *_dreego.go
+**/dree.go
 .DS_Store

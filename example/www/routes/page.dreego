@@ -1,0 +1,205 @@
+import Button "components/dreegoui/Button.dreego"
+import Card "components/dreegoui/Card.dreego"
+import CodeBox "components/dreegoui/CodeBox.dreego"
+import ThemePicker "components/dreegoui/ThemePicker.dreego"
+import Toggle "components/dreegoui/Toggle.dreego"
+
+<head>
+    <title>Dreego UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dreego UI component showcase">
+    <link rel="stylesheet" href="/dreego-ui/theme.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html { background: var(--dreego-color-canvas); }
+        body {
+            background: var(--dreego-color-canvas);
+            color: var(--dreego-color-text);
+            font-family: var(--dreego-type-font-sans);
+            font-size: var(--dreego-type-base-size);
+            line-height: var(--dreego-type-line-height);
+            margin: 0;
+        }
+    </style>
+</head>
+
+<server>
+    themes := []dreegoui.ThemeOption{
+        {ID: "white", Name: "White"},
+        {ID: "black", Name: "Black"},
+        {ID: "ocean", Name: "Ocean"},
+        {ID: "sand", Name: "Sand"},
+    }
+    selectedTheme := c.SessionVal(dreegoui.DefaultThemeSessionKey)
+</server>
+
+<body data-dreego-ui-showcase="true-2-1">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="showcase-shell">
+        <header class="showcase-header">
+            <a class="brand" href="/" aria-label="Dreego UI home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>Dreego UI</span>
+            </a>
+            <@ThemePicker id="theme-choice" themes={themes} csrfToken={c.CSRFToken()} selected={selectedTheme} returnTo="/"/>
+        </header>
+        <main id="main">
+            <section class="hero" aria-labelledby="hero-title">
+                <p class="eyebrow">Calm. Precise. Private.</p>
+                <h1 id="hero-title">Interfaces that let the product speak.</h1>
+                <p class="hero-copy">A focused SSR-first system for Dreego applications, built around accessible defaults and themes you own.</p>
+                <div class="actions">
+                    <@Button disabled={false}>Get started</@Button>
+                    <@Button disabled={false} variant="secondary">View principles</@Button>
+                </div>
+            </section>
+
+            <section class="component-grid" aria-label="Component examples">
+                <@Card>
+                    {#slot header}<h2>Clear choices</h2>{/slot}
+                    <p>Controls communicate their purpose without relying on decoration or color alone.</p>
+                    <div class="stack">
+                        <@Toggle id="privacy" name="privacy" label="Privacy protection" checked={true} disabled={false}/>
+                        <@Toggle id="updates" name="updates" label="Product updates" checked={false} disabled={false}/>
+                    </div>
+                    {#slot footer}<span class="status"><span aria-hidden="true">✓</span> Preferences stay with you</span>{/slot}
+                </@Card>
+
+                <@Card>
+                    {#slot header}<h2>Typed foundations</h2>{/slot}
+                    <p>Components compile to Go and consume validated design tokens.</p>
+                    <@CodeBox code="registry, err := ui.NewRegistry(options)" language="go" label="Theme registry"/>
+                </@Card>
+            </section>
+        </main>
+        <footer class="showcase-footer">
+            <span>Dreego UI preview</span>
+            <span>SSR first · Accessible by design</span>
+        </footer>
+    </div>
+</body>
+
+<style>
+.skip-link {
+    background: var(--dreego-color-accent);
+    color: var(--dreego-color-accent-text);
+    left: -9999px;
+    padding: 0.75rem 1rem;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+}
+.showcase-shell {
+    margin: 0 auto;
+    max-width: 76rem;
+    min-height: 100vh;
+    padding: 0 1.5rem;
+}
+.showcase-header,
+.showcase-footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.showcase-header {
+    border-bottom: 1px solid var(--dreego-color-border);
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+}
+.brand {
+    align-items: center;
+    color: var(--dreego-color-text);
+    display: inline-flex;
+    font-weight: var(--dreego-type-weight-strong);
+    gap: 0.75rem;
+    text-decoration: none;
+}
+.brand-mark {
+    align-items: center;
+    background: var(--dreego-color-accent);
+    border-radius: 0.75rem;
+    color: var(--dreego-color-accent-text);
+    display: inline-flex;
+    height: 2.25rem;
+    justify-content: center;
+    width: 2.25rem;
+}
+.hero {
+    max-width: 52rem;
+    padding: clamp(4rem, 10vw, 8rem) 0 4rem;
+}
+.eyebrow {
+    color: var(--dreego-color-accent);
+    font-size: 0.875rem;
+    font-weight: var(--dreego-type-weight-strong);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+h1 {
+    font-size: clamp(2.75rem, 8vw, 5.75rem);
+    letter-spacing: -0.055em;
+    line-height: 0.98;
+    margin: 1rem 0 1.5rem;
+}
+.hero-copy {
+    color: var(--dreego-color-text-muted);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    max-width: 42rem;
+}
+.actions,
+.stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+}
+.actions {
+    margin-top: 2rem;
+}
+.stack {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 1.5rem;
+}
+.component-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-bottom: 5rem;
+}
+.component-grid > * {
+    min-width: 0;
+}
+.component-grid h2,
+.component-grid p {
+    margin: 0;
+}
+.component-grid p {
+    color: var(--dreego-color-text-muted);
+    margin-bottom: 1.25rem;
+}
+.status {
+    color: var(--dreego-color-success);
+    font-weight: var(--dreego-type-weight-medium);
+}
+.showcase-footer {
+    border-top: 1px solid var(--dreego-color-border);
+    color: var(--dreego-color-text-muted);
+    font-size: 0.875rem;
+    gap: 1rem;
+    padding: 1.5rem 0 2.5rem;
+}
+@media (max-width: 48rem) {
+    .showcase-header,
+    .showcase-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .component-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

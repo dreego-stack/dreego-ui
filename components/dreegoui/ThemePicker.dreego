@@ -1,0 +1,74 @@
+Component ThemePicker (id string, themes []ThemeOption, csrfToken string, selected string = "", action string = "/dreego-ui/theme", returnTo string = "/")
+
+<body data-dreego-ui="theme-picker-1">
+    <form class="dreego-theme-picker" method="post" action="{{ action }}">
+        <label for="{{ id }}">Theme</label>
+        {#if len(themes) > 0}
+            <div class="dreego-theme-picker__controls">
+                <select id="{{ id }}" name="theme">
+                    {#each themes as theme}
+                        {#if theme.ID == selected}
+                            <option value="{{ theme.ID }}" selected>{{ theme.Name }}</option>
+                        {#else}
+                            <option value="{{ theme.ID }}">{{ theme.Name }}</option>
+                        {/if}
+                    {/each}
+                </select>
+                <input type="hidden" name="csrf_token" value="{{ csrfToken }}">
+                <input type="hidden" name="return_to" value="{{ returnTo }}">
+                <button type="submit">Apply</button>
+            </div>
+        {#else}
+            <select id="{{ id }}" name="theme" disabled>
+                <option>No themes available</option>
+            </select>
+        {/if}
+    </form>
+</body>
+
+<style>
+.dreego-theme-picker {
+    color: var(--dreego-color-text);
+    display: grid;
+    font-family: var(--dreego-type-font-sans);
+    gap: 0.5rem;
+}
+.dreego-theme-picker > label {
+    font-size: 0.875rem;
+    font-weight: var(--dreego-type-weight-medium);
+}
+.dreego-theme-picker__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+}
+select,
+button {
+    border-radius: var(--dreego-shape-radius-medium);
+    font: inherit;
+    min-height: 2.75rem;
+}
+select {
+    background: var(--dreego-color-surface-raised);
+    border: 1px solid var(--dreego-color-border);
+    color: var(--dreego-color-text);
+    min-width: 12rem;
+    padding: 0.625rem 2.5rem 0.625rem 0.75rem;
+}
+button {
+    background: var(--dreego-color-accent);
+    border: 1px solid transparent;
+    color: var(--dreego-color-accent-text);
+    cursor: pointer;
+    font-weight: var(--dreego-type-weight-medium);
+    padding: 0.625rem 1rem;
+}
+button:hover {
+    background: var(--dreego-color-accent-hover);
+}
+select:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--dreego-color-focus);
+    outline-offset: 3px;
+}
+</style>

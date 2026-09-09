@@ -69,6 +69,25 @@ Unknown themes and external return URLs are rejected. The default preference
 store uses an HttpOnly, SameSite=Lax cookie. Applications can provide account-
 level storage by implementing `PreferenceStore`.
 
+Applications that need the selected value inside `.dreego` templates can use
+the Dreego session store:
+
+```go
+if err := app.SetSessionStore(
+    dreego.NewCookieStore([]byte("replace-with-a-secret")),
+); err != nil {
+    log.Fatal(err)
+}
+
+_, err := ui.Register(app, ui.Options{
+    Preference: ui.SessionPreference{},
+})
+```
+
+The selected ID is then available as
+`c.SessionVal(ui.DefaultThemeSessionKey)`. A custom session key can be supplied
+with `ui.SessionPreference{Key: "appearance_theme"}`.
+
 ## Validation
 
 Theme registration happens before the Dreego app is built. Registration fails

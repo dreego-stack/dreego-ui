@@ -4,10 +4,12 @@ import (
 	"errors"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 	"time"
 
 	ui "github.com/dreego-stack/dreego-ui"
+	dreego "github.com/dreego-stack/dreego/core"
 )
 
 func TestCookiePreferenceUsesSecureDefaults(t *testing.T) {
@@ -107,6 +109,26 @@ func TestPreferenceErrorsReturnInternalServerError(t *testing.T) {
 	app.ServeHTTP(saveResponse, saveRequest)
 	if saveResponse.Code != http.StatusInternalServerError {
 		t.Fatalf("save status = %d, want 500", saveResponse.Code)
+	}
+}
+
+func TestSessionPreferencePersistsTheme(t *testing.T) {
+	preference := ui.SessionPreference{}
+	store := dreego.NewCookieStore([]byte("dreego-ui-test-secret-at-least-32-bytes"))
+	app := testApp(t)
+	if err := app.SetSessionStore(store); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := ui.Register(app, ui.Options{Preference: preference}); err != nil {
+		t.Fatal(err)
+	}
+
+	server := httptest.NewServer(app.Handler())
+	defer server.Close()
+	cookie := selectTheme(t, server.URL, "black", "/")
+	stylesheet := getStylesheet(t, server.URL, cookie)
+	if !strings.HasPrefix(stylesheet, `:root{--dreego-color-canvas:#000000;`) {
+		t.Fatal("session preference did not select BlackTheme")
 	}
 }
 

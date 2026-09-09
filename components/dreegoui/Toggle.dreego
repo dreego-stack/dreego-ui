@@ -1,0 +1,81 @@
+Component Toggle (id string, name string, label string, checked bool, disabled bool)
+
+<body data-dreego-ui="toggle-5">
+    <label class="dreego-toggle" for="{{ id }}">
+        {#if checked}
+            {#if disabled}
+                <input id="{{ id }}" name="{{ name }}" type="checkbox" role="switch" checked disabled>
+            {#else}
+                <input id="{{ id }}" name="{{ name }}" type="checkbox" role="switch" checked>
+            {/if}
+        {#else}
+            {#if disabled}
+                <input id="{{ id }}" name="{{ name }}" type="checkbox" role="switch" disabled>
+            {#else}
+                <input id="{{ id }}" name="{{ name }}" type="checkbox" role="switch">
+            {/if}
+        {/if}
+        <span class="dreego-toggle__control" aria-hidden="true">
+            <span class="dreego-toggle__thumb"></span>
+        </span>
+        <span class="dreego-toggle__label">{{ label }}</span>
+    </label>
+</body>
+
+<style>
+.dreego-toggle {
+    align-items: center;
+    color: var(--dreego-color-text);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--dreego-type-font-sans);
+    gap: 0.75rem;
+    position: relative;
+}
+.dreego-toggle input {
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+.dreego-toggle__control {
+    background: var(--dreego-color-surface);
+    border: 1px solid var(--dreego-color-border);
+    border-radius: var(--dreego-shape-radius-pill);
+    display: inline-flex;
+    flex: 0 0 auto;
+    height: 1.75rem;
+    padding: 0.1875rem;
+    transition: background-color var(--dreego-motion-fast) var(--dreego-motion-easing), border-color var(--dreego-motion-fast) var(--dreego-motion-easing);
+    width: 3rem;
+}
+.dreego-toggle__thumb {
+    background: var(--dreego-color-text-muted);
+    border-radius: 50%;
+    box-shadow: var(--dreego-elevation-small);
+    height: 1.25rem;
+    transform: translateX(0);
+    transition: background-color var(--dreego-motion-fast) var(--dreego-motion-easing), transform var(--dreego-motion-fast) var(--dreego-motion-easing);
+    width: 1.25rem;
+}
+.dreego-toggle input:checked + .dreego-toggle__control {
+    background: var(--dreego-color-accent);
+    border-color: var(--dreego-color-accent);
+}
+.dreego-toggle input:checked + .dreego-toggle__control .dreego-toggle__thumb {
+    background: var(--dreego-color-accent-text);
+    transform: translateX(1.25rem);
+}
+.dreego-toggle input:focus-visible + .dreego-toggle__control {
+    outline: 3px solid var(--dreego-color-focus);
+    outline-offset: 3px;
+}
+.dreego-toggle input:disabled ~ * {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+.dreego-toggle__label {
+    font-weight: var(--dreego-type-weight-medium);
+}
+</style>

@@ -20,6 +20,15 @@ registry, err := ui.Register(app, ui.Options{
 Add `<link rel="stylesheet" href="/dreego-ui/theme.css">` to the application
 layout. See [Themes](docs/themes.md) for custom themes and preference storage.
 
+Install the current component sources into an application explicitly:
+
+```sh
+go run github.com/dreego-stack/dreego-ui/cmd/dreego-ui@latest install
+```
+
+The installer never overwrites existing files. See
+[Components](docs/components.md) for imports and typed usage.
+
 ## Design language
 
 Dreego UI is calm, precise, private, and functional. Neuecast, Apple, Proton,
@@ -36,6 +45,12 @@ smd make check
 
 See [the v0.1 specification](docs/spec.md) and
 [implementation plan](tasks/plan.md).
+
+Run the local component showcase with:
+
+```sh
+smd make example
+```
 
 ## License
 

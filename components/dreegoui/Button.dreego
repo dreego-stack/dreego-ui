@@ -1,0 +1,79 @@
+Component Button (disabled bool, variant string = "primary", kind string = "button")
+
+<server>
+    className := "dreego-button dreego-button--primary"
+    if variant == "secondary" {
+        className = "dreego-button dreego-button--secondary"
+    } else if variant == "quiet" {
+        className = "dreego-button dreego-button--quiet"
+    } else if variant == "danger" {
+        className = "dreego-button dreego-button--danger"
+    }
+    buttonType := "button"
+    if kind == "submit" || kind == "reset" {
+        buttonType = kind
+    }
+</server>
+
+<body class="dreego-button-host" data-dreego-ui="button-2">
+    {#if disabled}
+        <button class="{{ className }}" type="{{ buttonType }}" disabled>{#slot}</button>
+    {#else}
+        <button class="{{ className }}" type="{{ buttonType }}">{#slot}</button>
+    {/if}
+</body>
+
+<style>
+.dreego-button-host {
+    display: inline-flex;
+}
+.dreego-button {
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: var(--dreego-shape-radius-medium);
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    font-weight: var(--dreego-type-weight-medium);
+    gap: 0.5rem;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.6875rem 1rem;
+    transition: background-color var(--dreego-motion-fast) var(--dreego-motion-easing), border-color var(--dreego-motion-fast) var(--dreego-motion-easing), transform var(--dreego-motion-fast) var(--dreego-motion-easing);
+}
+.dreego-button:hover {
+    transform: translateY(-1px);
+}
+.dreego-button:active {
+    transform: translateY(0);
+}
+.dreego-button:focus-visible {
+    outline: 3px solid var(--dreego-color-focus);
+    outline-offset: 3px;
+}
+.dreego-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    transform: none;
+}
+.dreego-button--primary {
+    background: var(--dreego-color-accent);
+    color: var(--dreego-color-accent-text);
+}
+.dreego-button--primary:hover {
+    background: var(--dreego-color-accent-hover);
+}
+.dreego-button--secondary {
+    background: var(--dreego-color-surface-raised);
+    border-color: var(--dreego-color-border);
+    color: var(--dreego-color-text);
+}
+.dreego-button--quiet {
+    background: transparent;
+    color: var(--dreego-color-text);
+}
+.dreego-button--danger {
+    background: var(--dreego-color-danger);
+    color: var(--dreego-color-canvas);
+}
+</style>

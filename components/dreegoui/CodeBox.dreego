@@ -1,0 +1,50 @@
+Component CodeBox (code string, language string = "text", label string = "Code example")
+
+<body data-dreego-ui="code-box">
+    <figure class="dreego-code-box">
+        <figcaption class="dreego-code-box__caption">
+            <span>{{ label }}</span>
+            <span class="dreego-code-box__language">{{ language }}</span>
+        </figcaption>
+        <pre tabindex="0"><code data-language="{{ language }}">{{ code }}</code></pre>
+    </figure>
+</body>
+
+<style>
+.dreego-code-box {
+    background: var(--dreego-color-surface);
+    border: 1px solid var(--dreego-color-border);
+    border-radius: var(--dreego-shape-radius-large);
+    color: var(--dreego-color-text);
+    margin: 0;
+    overflow: hidden;
+}
+.dreego-code-box__caption {
+    align-items: center;
+    border-bottom: 1px solid var(--dreego-color-border);
+    display: flex;
+    font-family: var(--dreego-type-font-sans);
+    font-size: 0.8125rem;
+    font-weight: var(--dreego-type-weight-medium);
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+}
+.dreego-code-box__language {
+    color: var(--dreego-color-text-muted);
+}
+pre {
+    margin: 0;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1rem;
+}
+pre:focus-visible {
+    outline: 3px solid var(--dreego-color-focus);
+    outline-offset: -3px;
+}
+code {
+    font-family: var(--dreego-type-font-mono);
+    font-size: 0.875rem;
+    line-height: 1.65;
+}
+</style>
