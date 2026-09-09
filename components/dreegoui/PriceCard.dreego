@@ -1,0 +1,70 @@
+Component PriceCard (id string, title string, price string, period string, description string = "", ctaLabel string, href string, featured bool)
+
+<body data-dreego-ui="price-card-7">
+    <article class="dreego-price-card" aria-labelledby="{{ id }}-title">
+        {#if featured}<p class="dreego-price-card__badge">Recommended</p>{/if}
+        <h2 id="{{ id }}-title">{{ title }}</h2>
+        {#if description != ""}<p class="dreego-price-card__description">{{ description }}</p>{/if}
+        <p class="dreego-price-card__price"><strong>{{ price }}</strong> <span>{{ period }}</span></p>
+        <div class="dreego-price-card__features">{#slot features}{/slot}</div>
+        <a class="dreego-price-card__action" href="{{ href }}">{{ ctaLabel }}</a>
+    </article>
+</body>
+
+<style>
+.dreego-price-card {
+    background: var(--dreego-color-surface-raised);
+    border: 1px solid var(--dreego-color-border);
+    border-radius: var(--dreego-shape-radius-large);
+    box-shadow: var(--dreego-elevation-small);
+    color: var(--dreego-color-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: clamp(1.25rem, 4vw, 2rem);
+}
+.dreego-price-card h2,
+.dreego-price-card p {
+    margin-top: 0;
+}
+.dreego-price-card__badge {
+    color: var(--dreego-color-accent);
+    font-size: 0.75rem;
+    font-weight: var(--dreego-type-weight-strong);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.dreego-price-card__description,
+.dreego-price-card__price span {
+    color: var(--dreego-color-text-muted);
+}
+.dreego-price-card__price strong {
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.04em;
+}
+.dreego-price-card__features {
+    margin-bottom: 1.5rem;
+}
+.dreego-price-card__features ul {
+    padding-left: 1.25rem;
+}
+.dreego-price-card__action {
+    background: var(--dreego-color-accent);
+    border-radius: var(--dreego-shape-radius-medium);
+    color: var(--dreego-color-accent-text);
+    display: block;
+    font-weight: var(--dreego-type-weight-medium);
+    margin-top: auto;
+    min-height: 2.75rem;
+    padding: 0.6875rem 1rem;
+    text-align: center;
+    text-decoration: none;
+}
+.dreego-price-card__action:hover {
+    background: var(--dreego-color-accent-hover);
+}
+.dreego-price-card__action:focus-visible {
+    outline: 3px solid var(--dreego-color-focus);
+    outline-offset: 3px;
+}
+</style>

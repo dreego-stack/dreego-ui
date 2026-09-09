@@ -1,0 +1,42 @@
+Component Footer
+
+<body data-dreego-ui="footer-3">
+    <footer class="dreego-footer">
+        <div class="dreego-footer__primary">{#slot}</div>
+        <div class="dreego-footer__meta">{#slot meta}{/slot}</div>
+    </footer>
+</body>
+
+<style>
+.dreego-footer {
+    align-items: center;
+    border-top: 1px solid var(--dreego-color-border);
+    color: var(--dreego-color-text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    gap: 1rem 2rem;
+    justify-content: space-between;
+    padding: 1.5rem clamp(1rem, 4vw, 2rem);
+}
+.dreego-footer__primary,
+.dreego-footer__meta {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.dreego-footer a {
+    color: inherit;
+}
+.dreego-footer a:focus-visible {
+    outline: 3px solid var(--dreego-color-focus);
+    outline-offset: 3px;
+}
+@media (max-width: 36rem) {
+    .dreego-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+</style>

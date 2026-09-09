@@ -1,0 +1,42 @@
+Component PageShell
+
+<body data-dreego-ui="page-shell-2">
+    <div class="dreego-page-shell">
+        <div class="dreego-page-shell__header">{#slot header}{/slot}</div>
+        <div class="dreego-page-shell__body">
+            <div class="dreego-page-shell__sidebar">{#slot sidebar}{/slot}</div>
+            <main class="dreego-page-shell__main">{#slot}</main>
+        </div>
+        <div class="dreego-page-shell__footer">{#slot footer}{/slot}</div>
+    </div>
+</body>
+
+<style>
+.dreego-page-shell {
+    background: var(--dreego-color-canvas);
+    color: var(--dreego-color-text);
+    min-height: 100vh;
+}
+.dreego-page-shell__body {
+    display: grid;
+    gap: clamp(1rem, 3vw, 2rem);
+    grid-template-columns: minmax(12rem, 17rem) minmax(0, 1fr);
+    margin: 0 auto;
+    max-width: 90rem;
+    padding: clamp(1rem, 4vw, 2rem);
+}
+.dreego-page-shell__main,
+.dreego-page-shell__sidebar {
+    min-width: 0;
+}
+.dreego-page-shell__sidebar:empty,
+.dreego-page-shell__header:empty,
+.dreego-page-shell__footer:empty {
+    display: none;
+}
+@media (max-width: 48rem) {
+    .dreego-page-shell__body {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

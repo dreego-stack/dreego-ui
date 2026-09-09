@@ -18,6 +18,11 @@ func TestComponentSourcesUseThemeTokensAndNativeControls(t *testing.T) {
 		{"Card.dreego", []string{"<article", "{#slot header}", "{#slot footer}"}},
 		{"CodeBox.dreego", []string{"<figure", "<figcaption", "<pre", "<code"}},
 		{"Icon.dreego", []string{"<svg", "<title", `aria-hidden="true"`, `role="img"`}},
+		{"Navbar.dreego", []string{"<header", "<nav", `aria-label=`, "{#slot brand}", "{#slot actions}"}},
+		{"Sidebar.dreego", []string{"<aside", "<nav", `aria-label=`, "{#slot footer}"}},
+		{"Footer.dreego", []string{"<footer", "{#slot meta}"}},
+		{"PriceCard.dreego", []string{"<article", "<h2", "<a", "{#slot features}", `aria-labelledby=`}},
+		{"PageShell.dreego", []string{"<main", "{#slot header}", "{#slot sidebar}", "{#slot footer}"}},
 		{"ThemePicker.dreego", []string{"<form", "<label", "<select", `method="post"`, `name="csrf_token"`}},
 	}
 

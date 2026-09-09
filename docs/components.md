@@ -135,6 +135,41 @@ token is required by the component API so applications do not accidentally
 omit Dreego's default protection. Pass an empty string only when CSRF is
 explicitly disabled for the application.
 
+## Application layout
+
+`Navbar`, `Sidebar`, `Footer`, and `PageShell` expose structural slots rather
+than owning application links or copy. Their `label` props provide accessible
+navigation names, and `PageShell` collapses its sidebar below 48rem.
+
+```dreego
+<@PageShell>
+    {#slot header}<@Navbar label="Primary">...</@Navbar>{/slot}
+    {#slot sidebar}<@Sidebar label="Settings">...</@Sidebar>{/slot}
+    <h1>Account</h1>
+    {#slot footer}<@Footer>...</@Footer>{/slot}
+</@PageShell>
+```
+
+## PriceCard
+
+```dreego
+<@PriceCard
+    id="pro-plan"
+    title="Pro"
+    price="€12"
+    period="per month"
+    description="For growing teams"
+    ctaLabel="Choose Pro"
+    href="/checkout"
+    featured={true}
+>
+    {#slot features}<ul><li>Private projects</li></ul>{/slot}
+</@PriceCard>
+```
+
+The required `id` connects the article to its visible heading. Applications
+own localized pricing text, feature markup, and destination URLs.
+
 ## Dreego v0.6.4 compatibility
 
 Dreego v0.6.4 emits scoped CSS attribute selectors without quotes. A numeric

@@ -7,3 +7,4 @@ version: patch
 - Feat: add a non-overwriting installer and the first accessible component
   slice with Button, Toggle, Card, CodeBox, and ThemePicker.
 - Chore: support Dreego v0.6.4 and use `+page.dreego` for the root showcase.
+- Feat: add Icon, Navbar, Sidebar, Footer, PriceCard, and PageShell components.

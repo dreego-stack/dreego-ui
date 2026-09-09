@@ -1,0 +1,54 @@
+Component Navbar (label string = "Primary navigation")
+
+<body data-dreego-ui="navbar-0">
+    <header class="dreego-navbar">
+        <div class="dreego-navbar__brand">{#slot brand}{/slot}</div>
+        <nav class="dreego-navbar__links" aria-label="{{ label }}">{#slot}</nav>
+        <div class="dreego-navbar__actions">{#slot actions}{/slot}</div>
+    </header>
+</body>
+
+<style>
+.dreego-navbar {
+    align-items: center;
+    background: var(--dreego-color-canvas);
+    border-bottom: 1px solid var(--dreego-color-border);
+    color: var(--dreego-color-text);
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: auto 1fr auto;
+    min-height: 4rem;
+    padding: 0.75rem clamp(1rem, 4vw, 2rem);
+}
+.dreego-navbar__brand,
+.dreego-navbar__links,
+.dreego-navbar__actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.dreego-navbar__links {
+    justify-content: center;
+}
+.dreego-navbar a {
+    color: var(--dreego-color-text);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.25em;
+}
+.dreego-navbar a:focus-visible {
+    outline: 3px solid var(--dreego-color-focus);
+    outline-offset: 3px;
+}
+@media (max-width: 42rem) {
+    .dreego-navbar {
+        align-items: flex-start;
+        grid-template-columns: 1fr auto;
+    }
+    .dreego-navbar__links {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+        order: 3;
+    }
+}
+</style>

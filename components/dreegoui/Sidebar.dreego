@@ -1,0 +1,50 @@
+Component Sidebar (label string = "Sidebar navigation")
+
+<body data-dreego-ui="sidebar-2">
+    <aside class="dreego-sidebar">
+        <nav class="dreego-sidebar__nav" aria-label="{{ label }}">{#slot}</nav>
+        <div class="dreego-sidebar__footer">{#slot footer}{/slot}</div>
+    </aside>
+</body>
+
+<style>
+.dreego-sidebar {
+    background: var(--dreego-color-surface);
+    border: 1px solid var(--dreego-color-border);
+    border-radius: var(--dreego-shape-radius-large);
+    color: var(--dreego-color-text);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 0;
+    padding: 1rem;
+}
+.dreego-sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.dreego-sidebar__nav a {
+    border-radius: var(--dreego-shape-radius-medium);
+    color: var(--dreego-color-text);
+    display: block;
+    padding: 0.75rem;
+    text-decoration: none;
+}
+.dreego-sidebar__nav a:hover {
+    background: var(--dreego-color-surface-raised);
+}
+.dreego-sidebar__nav a:focus-visible {
+    outline: 3px solid var(--dreego-color-focus);
+    outline-offset: 2px;
+}
+.dreego-sidebar__footer {
+    border-top: 1px solid var(--dreego-color-border);
+    color: var(--dreego-color-text-muted);
+    margin-top: auto;
+    padding: 1rem 0.75rem 0;
+}
+.dreego-sidebar__footer:empty {
+    display: none;
+}
+</style>

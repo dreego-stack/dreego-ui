@@ -27,6 +27,11 @@ require github.com/dreego-stack/dreego v0.6.4
 import Card "components/dreegoui/Card.dreego"
 import CodeBox "components/dreegoui/CodeBox.dreego"
 import Icon "components/dreegoui/Icon.dreego"
+import Navbar "components/dreegoui/Navbar.dreego"
+import PageShell "components/dreegoui/PageShell.dreego"
+import PriceCard "components/dreegoui/PriceCard.dreego"
+import Sidebar "components/dreegoui/Sidebar.dreego"
+import Footer "components/dreegoui/Footer.dreego"
 import ThemePicker "components/dreegoui/ThemePicker.dreego"
 import Toggle "components/dreegoui/Toggle.dreego"
 
@@ -50,6 +55,11 @@ import Toggle "components/dreegoui/Toggle.dreego"
     </@Card>
     <@CodeBox code="go test ./..." language="shell"/>
     <@Icon name="shield" label="Protected"/>
+    <@Navbar label="Primary navigation">{#slot brand}<a href="/">Home</a>{/slot}<a href="/docs">Docs</a>{#slot actions}<a href="/login">Log in</a>{/slot}</@Navbar>
+    <@Sidebar label="Settings navigation"><a href="/profile">Profile</a>{#slot footer}<small>Account</small>{/slot}</@Sidebar>
+    <@PriceCard id="pro-plan" title="Pro" price="€12" period="per month" description="For growing teams" ctaLabel="Choose Pro" href="/checkout" featured={true}>{#slot features}<ul><li>Private projects</li></ul>{/slot}</@PriceCard>
+    <@PageShell>{#slot header}<span>Header</span>{/slot}{#slot sidebar}<span>Sidebar</span>{/slot}<p>Content</p>{#slot footer}<span>Footer</span>{/slot}</@PageShell>
+    <@Footer><span>Dreego UI</span>{#slot meta}<small>Private by design</small>{/slot}</@Footer>
     <@ThemePicker id="theme-choice" themes={themes} csrfToken="token" selected="white" returnTo="/settings"/>
 </body>`)
 	writeFixtureFile(t, directory, "www/routes/render_test.go", `package routes
@@ -71,7 +81,8 @@ func TestComponentPageMarkup(t *testing.T) {
     }
     for _, want := range []string{
         "<button", "role=\"switch\"", "<article", "<figure", "<form", "<svg",
-        "name=\"csrf_token\"", "value=\"black\"", "go test ./...",
+        "name=\"csrf_token\"", "value=\"black\"", "go test ./...", "Primary navigation",
+        "Settings navigation", "Choose Pro", "Private projects", "Private by design",
     } {
         if !strings.Contains(html, want) {
             t.Errorf("rendered HTML does not contain %q", want)
@@ -113,7 +124,7 @@ func TestComponentPageMarkup(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, function := range []string{"Button", "Toggle", "Card", "CodeBox", "Icon", "ThemePicker"} {
+	for _, function := range []string{"Button", "Toggle", "Card", "CodeBox", "Footer", "Icon", "Navbar", "PageShell", "PriceCard", "Sidebar", "ThemePicker"} {
 		if !strings.Contains(string(generated), "func "+function+"(") {
 			t.Errorf("generated components do not contain %s", function)
 		}
