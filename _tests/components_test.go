@@ -38,11 +38,7 @@ import Toggle "components/dreegoui/Toggle.dreego"
 <head><title>Components</title></head>
 
 <server>
-    themes := []dreegoui.ThemeOption{
-        {ID: "white", Name: "White"},
-        {ID: "black", Name: "Black"},
-        {ID: "ocean", Name: "Ocean"},
-    }
+    themes := []string{"white", "black", "ocean"}
 </server>
 
 <body>

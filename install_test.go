@@ -29,7 +29,6 @@ func TestInstallComponentsWritesCompleteStableSet(t *testing.T) {
 		"Sidebar.dreego",
 		"ThemePicker.dreego",
 		"Toggle.dreego",
-		"theme_option.go",
 	}
 	got := make([]string, len(installed))
 	for i, path := range installed {

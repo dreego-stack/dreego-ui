@@ -1,3 +1,4 @@
+
 import Button "components/dreegoui/Button.dreego"
 import Card "components/dreegoui/Card.dreego"
 import CodeBox "components/dreegoui/CodeBox.dreego"
@@ -24,13 +25,8 @@ import Toggle "components/dreegoui/Toggle.dreego"
 </head>
 
 <server>
-    themes := []dreegoui.ThemeOption{
-        {ID: "white", Name: "White"},
-        {ID: "black", Name: "Black"},
-        {ID: "ocean", Name: "Ocean"},
-        {ID: "sand", Name: "Sand"},
-    }
-    selectedTheme := c.SessionVal(dreegoui.DefaultThemeSessionKey)
+    themes := []string{"white", "black", "ocean", "sand"}
+    selectedTheme := c.SessionVal("dreego_ui_theme")
 </server>
 
 <body data-dreego-ui-showcase="true-2-1">

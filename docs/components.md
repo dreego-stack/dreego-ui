@@ -105,18 +105,14 @@ keyboard focusable.
 
 ## ThemePicker
 
-`ThemeOption` is installed beside the component and belongs to the generated
-`dreegoui` package.
+Theme IDs are passed as strings, which keeps the component source portable
+across Go modules without a companion Go source file.
 
 ```dreego
 import ThemePicker "components/dreegoui/ThemePicker.dreego"
 
 <server>
-    themes := []dreegoui.ThemeOption{
-        {ID: "white", Name: "White"},
-        {ID: "black", Name: "Black"},
-        {ID: "ocean", Name: "Ocean"},
-    }
+    themes := []string{"white", "black", "ocean"}
 </server>
 
 <body>

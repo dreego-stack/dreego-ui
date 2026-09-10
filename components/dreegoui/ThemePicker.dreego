@@ -1,4 +1,6 @@
-Component ThemePicker (id string, themes []ThemeOption, csrfToken string, selected string = "", action string = "/dreego-ui/theme", returnTo string = "/")
+
+
+Component ThemePicker (id string, themes []string, csrfToken string, selected string = "", action string = "/dreego-ui/theme", returnTo string = "/")
 
 <body data-dreego-ui="theme-picker-1">
     <form class="dreego-theme-picker" method="post" action="{{ action }}">
@@ -7,10 +9,10 @@ Component ThemePicker (id string, themes []ThemeOption, csrfToken string, select
             <div class="dreego-theme-picker__controls">
                 <select id="{{ id }}" name="theme">
                     {#each themes as theme}
-                        {#if theme.ID == selected}
-                            <option value="{{ theme.ID }}" selected>{{ theme.Name }}</option>
+                        {#if theme == selected}
+                            <option value="{{ theme }}" selected>{{ theme }}</option>
                         {#else}
-                            <option value="{{ theme.ID }}">{{ theme.Name }}</option>
+                            <option value="{{ theme }}">{{ theme }}</option>
                         {/if}
                     {/each}
                 </select>
