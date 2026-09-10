@@ -1,3 +1,5 @@
+
+
 Component PageShell
 
 <body data-dreego-ui="page-shell-2">
@@ -34,7 +36,7 @@ Component PageShell
 .dreego-page-shell__footer:empty {
     display: none;
 }
-@media (max-width: 48rem) {
+@media (max-width: 42rem) {
     .dreego-page-shell__body {
         grid-template-columns: 1fr;
     }
