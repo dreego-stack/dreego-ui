@@ -1,6 +1,6 @@
 Component PriceCard (id string, title string, price string, period string, description string = "", ctaLabel string, href string, featured bool)
 
-<body data-dreego-ui="price-card-7">
+<body>
     <article class="dreego-price-card" aria-labelledby="{{ id }}-title">
         {#if featured}<p class="dreego-price-card__badge">Recommended</p>{/if}
         <h2 id="{{ id }}-title">{{ title }}</h2>

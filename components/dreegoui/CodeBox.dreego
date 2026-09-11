@@ -1,6 +1,6 @@
 Component CodeBox (code string, language string = "text", label string = "Code example")
 
-<body data-dreego-ui="code-box">
+<body>
     <figure class="dreego-code-box">
         <figcaption class="dreego-code-box__caption">
             <span>{{ label }}</span>

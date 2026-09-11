@@ -1,6 +1,6 @@
 Component Navbar (label string = "Primary navigation")
 
-<body data-dreego-ui="navbar-0">
+<body>
     <header class="dreego-navbar">
         <div class="dreego-navbar__brand">{#slot brand}{/slot}</div>
         <nav class="dreego-navbar__links" aria-label="{{ label }}">{#slot}</nav>

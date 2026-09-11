@@ -1,6 +1,6 @@
 Component Toggle (id string, name string, label string, checked bool, disabled bool)
 
-<body data-dreego-ui="toggle-5">
+<body>
     <label class="dreego-toggle" for="{{ id }}">
         {#if checked}
             {#if disabled}

@@ -36,7 +36,7 @@ Purple is not used as the default accent color.
 
 ## Tech Stack
 
-- Go 1.22 or newer
+- Go 1.27 or newer
 - `github.com/dreego-stack/dreego/core`
 - Dreego `.dreego` components
 - CSS custom properties
@@ -231,4 +231,3 @@ smd make example
   treating built-in theme colors as stable.
 - Decide whether cookie preference storage belongs in v0.1 or follows after the
   registry and ThemePicker vertical slice.
-

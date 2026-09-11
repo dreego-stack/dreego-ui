@@ -15,7 +15,7 @@ Component Button (disabled bool, variant string = "primary", kind string = "butt
     }
 </server>
 
-<body class="dreego-button-host" data-dreego-ui="button-2">
+<body class="dreego-button-host">
     {#if disabled}
         <button class="{{ className }}" type="{{ buttonType }}" disabled>{#slot}</button>
     {#else}

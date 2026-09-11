@@ -1,6 +1,6 @@
 Component Card
 
-<body data-dreego-ui="card-3">
+<body>
     <article class="dreego-card">
         <header class="dreego-card__header">{#slot header}{/slot}</header>
         <div class="dreego-card__body">{#slot}</div>

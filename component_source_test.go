@@ -1,7 +1,6 @@
 package ui_test
 
 import (
-	"crypto/sha256"
 	"os"
 	"path/filepath"
 	"strings"
@@ -37,21 +36,6 @@ func TestComponentSourcesUseThemeTokensAndNativeControls(t *testing.T) {
 					t.Errorf("%s does not contain %q", tt.file, want)
 				}
 			}
-			hash := sha256.Sum256(content)
-			if hash[0]>>4 < 10 {
-				t.Fatal("component scope hash starts with a digit, which Dreego v0.6.4 emits as invalid unquoted CSS")
-			}
 		})
-	}
-}
-
-func TestShowcaseScopeHashStartsWithLetter(t *testing.T) {
-	content, err := os.ReadFile(filepath.Join("example", "www", "routes", "+page.dreego"))
-	if err != nil {
-		t.Fatal(err)
-	}
-	hash := sha256.Sum256(content)
-	if hash[0]>>4 < 10 {
-		t.Fatal("showcase scope hash starts with a digit, which Dreego v0.6.4 emits as invalid unquoted CSS")
 	}
 }

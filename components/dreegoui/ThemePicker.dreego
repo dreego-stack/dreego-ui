@@ -2,7 +2,7 @@
 
 Component ThemePicker (id string, themes []string, csrfToken string, selected string = "", action string = "/dreego-ui/theme", returnTo string = "/")
 
-<body data-dreego-ui="theme-picker-1">
+<body>
     <form class="dreego-theme-picker" method="post" action="{{ action }}">
         <label for="{{ id }}">Theme</label>
         {#if len(themes) > 0}
