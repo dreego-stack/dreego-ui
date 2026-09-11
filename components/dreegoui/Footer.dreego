@@ -1,6 +1,6 @@
 Component Footer
 
-<body data-dreego-ui="footer-3">
+<body>
     <footer class="dreego-footer">
         <div class="dreego-footer__primary">{#slot}</div>
         <div class="dreego-footer__meta">{#slot meta}{/slot}</div>

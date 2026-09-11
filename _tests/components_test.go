@@ -14,9 +14,9 @@ func TestInstalledComponentsGenerateAndCompileWithDreego(t *testing.T) {
 	directory := t.TempDir()
 	writeFixtureFile(t, directory, "go.mod", `module componentfixture
 
-go 1.22
+go 1.27
 
-require github.com/dreego-stack/dreego v0.6.4
+require github.com/dreego-stack/dreego v0.7.0
 `)
 	writeFixtureFile(t, directory, "www/dreego.config.json", `{
     "logging": {"enabled": false},

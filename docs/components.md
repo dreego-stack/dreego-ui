@@ -1,9 +1,9 @@
 # Components
 
-Dreego `v0.6.4` discovers `.dreego` components inside the application's local
+Dreego discovers `.dreego` components inside the application's local
 website tree. Dreego UI therefore installs component sources explicitly instead
-of relying on an implicit module namespace. This version also uses the current
-[`<server>` and `<body>` semantic sections](https://github.com/dreego-stack/dreego/blob/v0.6.4/_docs/semantic-sections-migration.md).
+of relying on an implicit module namespace. Components use the current
+[`<server>` and `<body>` semantic sections](https://github.com/dreego-stack/dreego/blob/main/_docs/semantic-sections-migration.md).
 
 ## Install
 
@@ -36,8 +36,8 @@ import Button "components/dreegoui/Button.dreego"
 ```
 
 Variants are `primary`, `secondary`, `quiet`, and `danger`. Unknown variants
-fall back to `primary`. `disabled` is required because Dreego v0.6.4 does not
-support default values for Boolean component props.
+fall back to `primary`. `disabled` is explicit because component props do not
+have default values.
 
 ## Toggle
 
@@ -165,15 +165,3 @@ navigation names, and `PageShell` collapses its sidebar below 48rem.
 
 The required `id` connects the article to its visible heading. Applications
 own localized pricing text, feature markup, and destination URLs.
-
-## Dreego v0.6.4 compatibility
-
-Dreego v0.6.4 emits scoped CSS attribute selectors without quotes. A numeric
-scope hash is rejected by browsers, so the distributed sources contain stable
-`data-dreego-ui` seed attributes and tests guard their hashes. Keep those
-attributes when adapting a component.
-
-The v0.6.4 formatter also inserts an additional blank line into component
-declaration files on every run. Generation and compilation remain stable, but
-the library intentionally does not use `dreego fmt --check` until that upstream
-formatter behavior is fixed.

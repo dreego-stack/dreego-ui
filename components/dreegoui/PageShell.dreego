@@ -2,7 +2,7 @@
 
 Component PageShell
 
-<body data-dreego-ui="page-shell-2">
+<body>
     <div class="dreego-page-shell">
         <div class="dreego-page-shell__header">{#slot header}{/slot}</div>
         <div class="dreego-page-shell__body">

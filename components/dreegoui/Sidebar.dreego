@@ -1,6 +1,6 @@
 Component Sidebar (label string = "Sidebar navigation")
 
-<body data-dreego-ui="sidebar-2">
+<body>
     <aside class="dreego-sidebar">
         <nav class="dreego-sidebar__nav" aria-label="{{ label }}">{#slot}</nav>
         <div class="dreego-sidebar__footer">{#slot footer}{/slot}</div>

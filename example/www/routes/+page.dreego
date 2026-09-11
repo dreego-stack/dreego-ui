@@ -29,7 +29,7 @@ import Toggle "components/dreegoui/Toggle.dreego"
     selectedTheme := c.SessionVal("dreego_ui_theme")
 </server>
 
-<body data-dreego-ui-showcase="true-2-1">
+<body>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="showcase-shell">
         <header class="showcase-header">
